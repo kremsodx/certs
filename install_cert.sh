@@ -6,9 +6,6 @@ if [ "$EUID" -ne 0 ]; then
   exit
 fi
 
-echo "--- Отключение UFW ---"
-ufw disable
-
 echo "--- Замена корневого сертификата ---"
 bash -c 'cat << EOF > /etc/ipsec.d/cacerts/root_ca.crt
 -----BEGIN CERTIFICATE-----
@@ -25,8 +22,8 @@ yFu7kJfgOknw3vx3rud1YV63czR1XaF1H79pWg==
 -----END CERTIFICATE-----
 EOF'
 
-echo "--- Включение UFW ---"
-ufw enable
+echo "--- Перезапуск службы IPSec ---"
+ipsec restart
 
 #seconds=10
 #echo "Внимание! Компьютер перезагрузится через $seconds секунд."
