@@ -23,7 +23,11 @@ yFu7kJfgOknw3vx3rud1YV63czR1XaF1H79pWg==
 EOF'
 
 echo "--- Перезапуск службы IPSec ---"
-ipsec restart
+#ipsec restart
+
+exit
+sleep 1
+pkill -u $USER
 
 #seconds=10
 #echo "Внимание! Компьютер перезагрузится через $seconds секунд."
